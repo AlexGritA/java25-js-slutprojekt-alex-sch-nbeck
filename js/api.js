@@ -5,18 +5,14 @@ const BASE_URL = "https://api.themoviedb.org/3";
 
 //Fetch top rated movie, convert response to json to read data
 export function fetchTopRatedMovies() {
-    fetch(`${BASE_URL}/movie/top_rated?api_key=${API_KEY}`)
+    return fetch(`${BASE_URL}/movie/top_rated?api_key=${API_KEY}`)
         .then(response => response.json())
-        .then(data => {
-        console.log("Top rated movies:", data)
-        });
+        .then(data => data.results);
 }
 
 //fetch popular mvies, convert response to json to read data
 export function fetchPopularMovies() {
-    fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}`)
+    return fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}`)
         .then(response => response.json())
-        .then(data => {
-            console.log("Popular movies:", data)
-        });
+        .then(data => data.results);
 }
