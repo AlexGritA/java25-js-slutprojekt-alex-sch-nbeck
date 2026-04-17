@@ -1,5 +1,5 @@
-import {fetchTopRatedMovies, fetchPopularMovies, fetchMovieSearch} from "./api.js";
-import {createMovieCard} from "./ui.js"
+import {fetchTopRatedMovies, fetchPopularMovies, fetchMovieSearch, fetchPersonSearch} from "./api.js";
+import {createMovieCard, createPersonCard} from "./ui.js"
 
 const form = document.getElementById("search-form");
 
@@ -17,10 +17,18 @@ fetchPopularMovies().then(movies => {
 form.addEventListener("submit", function(event) {
     event.preventDefault();
 
+    const searchType = document.getElementById("search-type").value;
     const input = document.getElementById("search-input").value;
     document.getElementById("search-container").innerHTML = "";
-    fetchMovieSearch(input).then(movies => {
-    movies.forEach(movie => createMovieCard(movie, "search-container", true));
-});
+
+    if(searchType == "movie") {
+        fetchMovieSearch(input).then(movies => {
+            movies.forEach(movie => createMovieCard(movie, "search-container", true));
+        });
+    } else {
+        fetchPersonSearch(input).then(persons => {
+            persons.forEach(person => createPersonCard(person, "search-container", true))
+        });
+    }    
     document.getElementById("search-input").value = "";
 });

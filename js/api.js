@@ -23,3 +23,10 @@ export function fetchMovieSearch(query) {
     .then(response => response.json())
     .then(data => data.results);
 }
+
+//Fetch person search, convert to json to read data
+export function fetchPersonSearch(query) {
+    return fetch(`${BASE_URL}/search/person?api_key=${API_KEY}&query=${query}`)
+    .then(response => response.json())
+    .then(data => data.results);
+}

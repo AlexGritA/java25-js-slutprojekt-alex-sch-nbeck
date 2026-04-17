@@ -12,7 +12,11 @@
         <h1 class="mb-4 text-center">The Movie Database</h1>
 
     <form id="search-form" class="d-flex justify-content-center mb-4">
-        <input type="text" id="search-input" class="form-control w-25" placeholder="Search movies...">
+        <select id="search-type" class="form-select w-auto me-2">
+            <option value="movie">Movies</option>
+            <option value="person">People</option>
+        </select>
+        <input type="text" id="search-input" class="form-control w-25" placeholder="Search...">
         <button type="submit" class="btn btn-primary ms-2">Search</button>
     </form>
 
