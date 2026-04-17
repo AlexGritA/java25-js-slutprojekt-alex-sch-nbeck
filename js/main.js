@@ -22,5 +22,5 @@ form.addEventListener("submit", function(event) {
     fetchMovieSearch(input).then(movies => {
     movies.forEach(movie => createMovieCard(movie, "search-container", true));
 });
-document.getElementById("search-input").value = "";
+    document.getElementById("search-input").value = "";
 });
