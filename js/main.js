@@ -18,6 +18,7 @@ form.addEventListener("submit", function(event) {
     event.preventDefault();
 
     const input = document.getElementById("search-input").value;
+    document.getElementById("search-container").innerHTML = "";
     fetchMovieSearch(input).then(movies => {
     movies.forEach(movie => createMovieCard(movie, "search-container"));
 });
