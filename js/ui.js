@@ -1,5 +1,5 @@
-//Creates and displays a movie card with image, title, score, date
-export function createMovieCard(movie, containerId) {
+//Creates and displays a movie card with image, title, score, date, (overview)
+export function createMovieCard(movie, containerId, showOverview = false) {
 
     const container = document.getElementById(containerId);
     
@@ -16,6 +16,11 @@ export function createMovieCard(movie, containerId) {
     
     const img = document.createElement("img");
     img.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+
+    const overview = document.createElement("p");
+    overview.textContent = movie.overview;
+
+
     
     //Adds Bootstrap classes to style card and image
     card.classList.add("card", "border-0", "movie-card");
@@ -26,6 +31,9 @@ export function createMovieCard(movie, containerId) {
     card.appendChild(title);
     card.appendChild(score);
     card.appendChild(date);
-    
+    if (showOverview) {
+        card.appendChild(overview);
+    }
+
     container.appendChild(card);
 }
