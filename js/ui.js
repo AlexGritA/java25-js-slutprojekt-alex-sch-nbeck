@@ -16,7 +16,11 @@ export function createMovieCard(movie, containerId) {
     
     const img = document.createElement("img");
     img.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+
+    card.classList.add("card", "border-0", "movie-card");
+    img.classList.add("w-100");
     
+    //Adds element instances to card, then add card to container
     card.appendChild(img);
     card.appendChild(title);
     card.appendChild(score);

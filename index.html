@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Top top rated movies</title>
 </head>
 <body>
-    <h1>The Movie Database</h1>
+    <div class="container py-4">
+        <h1 class="mb-4 text-center">The Movie Database</h1>
 
-    <h2>Top Rated Movies</h2>
-    <div id="top-rated-container"></div>
-    
-    <h2>Popular Movies</h2>
-    <div id="popular-container"></div>
+        <h2 class="mb-3 text-center">Top Rated Movies</h2>
+        <div id="top-rated-container" class="d-flex flex-wrap gap-3 justify-content-center"></div>
+
+        <h2 class="mt-5 mb-3 text-center">Popular Movies</h2>
+        <div id="popular-container" class="d-flex flex-wrap gap-3 justify-content-center"></div>
+    </div>
 
     <script type="module" src="js/main.js"></script>
 </body>
