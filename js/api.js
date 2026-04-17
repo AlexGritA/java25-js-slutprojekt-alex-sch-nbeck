@@ -16,3 +16,10 @@ export function fetchPopularMovies() {
         .then(response => response.json())
         .then(data => data.results);
 }
+
+//Fetch movie search, convert to json to read data
+export function fetchMovieSearch(query) {
+    return fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`)
+    .then(response => response.json())
+    .then(data => data.results);
+}

@@ -16,7 +16,8 @@ export function createMovieCard(movie, containerId) {
     
     const img = document.createElement("img");
     img.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-
+    
+    //Adds Bootstrap classes to style card and image
     card.classList.add("card", "border-0", "movie-card");
     img.classList.add("w-100");
     
