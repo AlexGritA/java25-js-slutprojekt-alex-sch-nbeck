@@ -1,5 +1,6 @@
 import {fetchTopRatedMovies, fetchPopularMovies, fetchMovieSearch, fetchPersonSearch} from "./api.js";
 import {createMovieCard, createPersonCard} from "./ui.js"
+import {sortItems} from "./sort.js" 
 
 const form = document.getElementById("search-form");
 
@@ -19,15 +20,19 @@ form.addEventListener("submit", function(event) {
 
     const searchType = document.getElementById("search-type").value;
     const input = document.getElementById("search-input").value;
+    const sortType = document.getElementById("sort-type").value;
+
     document.getElementById("search-container").innerHTML = "";
 
     if(searchType == "movie") {
         fetchMovieSearch(input).then(movies => {
-            movies.forEach(movie => createMovieCard(movie, "search-container", true));
+            const sorted = sortItems(movies, sortType);
+            sorted.forEach(movie => createMovieCard(movie, "search-container", true));
         });
     } else {
         fetchPersonSearch(input).then(persons => {
-            persons.forEach(person => createPersonCard(person, "search-container", true))
+            const sorted = sortItems(persons, sortType);
+            sorted.forEach(person => createPersonCard(person, "search-container", true))
         });
     }    
     document.getElementById("search-input").value = "";

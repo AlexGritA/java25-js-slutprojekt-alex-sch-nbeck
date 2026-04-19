@@ -10,8 +10,16 @@
 <body>
     <div class="container py-4">
         <h1 class="mb-4 text-center">The Movie Database</h1>
+    
 
     <form id="search-form" class="d-flex justify-content-center mb-4">
+        <select id="sort-type" class="form-select w-auto me-2">
+            <option value="default">Sort by...</option>
+            <option value="az">A-Z</option>
+            <option value="za">Z-A</option>
+            <option value="score-asc">Score ↑</option>
+            <option value="score-desc">Score ↓</option>
+        </select>
         <select id="search-type" class="form-select w-auto me-2">
             <option value="movie">Movies</option>
             <option value="person">People</option>
