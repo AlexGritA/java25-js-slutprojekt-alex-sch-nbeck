@@ -1,6 +1,6 @@
-import {fetchTopRatedMovies, fetchPopularMovies, fetchMovieSearch, fetchPersonSearch} from "./api.js";
-import {createMovieCard, createPersonCard} from "./ui.js"
-import {sortItems} from "./sort.js" 
+import { fetchTopRatedMovies, fetchPopularMovies, fetchMovieSearch, fetchPersonSearch } from "./api.js";
+import { createMovieCard, createPersonCard } from "./ui.js"
+import { sortItems } from "./sort.js"
 
 const form = document.getElementById("search-form");
 
@@ -15,7 +15,7 @@ fetchPopularMovies().then(movies => {
 });
 
 //Listen for form submission, prevent page reload and get search input value
-form.addEventListener("submit", function(event) {
+form.addEventListener("submit", function (event) {
     event.preventDefault();
 
     const searchType = document.getElementById("search-type").value;
@@ -24,16 +24,32 @@ form.addEventListener("submit", function(event) {
 
     document.getElementById("search-container").innerHTML = "";
 
-    if(searchType == "movie") {
+    if (searchType == "movie") {
         fetchMovieSearch(input).then(movies => {
-            const sorted = sortItems(movies, sortType);
-            sorted.forEach(movie => createMovieCard(movie, "search-container", true));
+            if (movies.length === 0) {
+                document.getElementById("error-message").textContent = "No results found. Try a different search term.";
+            } else {
+                document.getElementById("error-message").textContent = "";
+                const sorted = sortItems(movies, sortType);
+                sorted.forEach(movie => createMovieCard(movie, "search-container", true));
+            }
+        }).catch(() => {
+            document.getElementById("error-message").textContent = "Something went wrong. Please try again later.";
         });
     } else {
         fetchPersonSearch(input).then(persons => {
-            const sorted = sortItems(persons, sortType);
-            sorted.forEach(person => createPersonCard(person, "search-container", true))
+            if (persons.length === 0) {
+                document.getElementById("error-message").textContent = "No results found. Try a different search term.";
+            } else {
+                document.getElementById("error-message").textContent = "";
+                const sorted = sortItems(persons, sortType);
+                sorted.forEach(person => createPersonCard(person, "search-container", true))
+            }
+        }).catch(() => {
+            document.getElementById("error-message").textContent = "Something went wrong. Please try again later.";
         });
-    }    
+
+    }
+
     document.getElementById("search-input").value = "";
 });
