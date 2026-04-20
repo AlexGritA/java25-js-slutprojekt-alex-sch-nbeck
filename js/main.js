@@ -53,3 +53,8 @@ form.addEventListener("submit", function (event) {
 
     document.getElementById("search-input").value = "";
 });
+
+//Reload page when title is clicked
+document.getElementById("site-title").addEventListener("click", () => {
+    location.reload();
+});
