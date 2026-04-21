@@ -30,3 +30,15 @@ export function fetchPersonSearch(query) {
     .then(response => response.json())
     .then(data => data.results);
 }
+
+//Fetch movie detail, convert to json to read data
+export function fetchMovieDetails(id) {
+    return fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`)
+    .then(response => response.json())
+}
+
+//Fetch person detail, convert to json to read data
+export function fetchPersonDetails(id) {
+    return fetch(`${BASE_URL}/person/${id}?api_key=${API_KEY}`)
+    .then(response => response.json())
+}
