@@ -8,3 +8,11 @@
 #site-title {
     cursor: pointer;
 }
+
+/*Hide elements when search results are displayed*/
+.hidden {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+}

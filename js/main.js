@@ -27,6 +27,14 @@ form.addEventListener("submit", function (event) {
     //Clear previous search results
     document.getElementById("search-container").innerHTML = "";
 
+    //Hide top rated and popular sections when search is performed
+    document.getElementById("top-rated-title").classList.add("hidden");
+    document.getElementById("top-rated-container").classList.add("hidden");
+    document.getElementById("popular-title").classList.add("hidden");
+    document.getElementById("popular-container").classList.add("hidden");
+    console.log("hidden added");
+
+    
     if (searchType == "movie") {
         fetchMovieSearch(input).then(movies => {
             if (movies.length === 0) {
