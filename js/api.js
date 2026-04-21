@@ -10,7 +10,7 @@ export function fetchTopRatedMovies() {
         .then(data => data.results);
 }
 
-//fetch popular mvies, convert response to json to read data
+//fetch popular movies, convert response to json to read data
 export function fetchPopularMovies() {
     return fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}`)
         .then(response => response.json())

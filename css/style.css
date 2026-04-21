@@ -1,9 +1,10 @@
+/* Styles for movie and person cards */
 .movie-card {
     width: 500px;
     border-radius: 10px;
     overflow: hidden;
 }
-
+/* Makes the title clickable with a pointer cursor */
 #site-title {
     cursor: pointer;
 }
