@@ -49,7 +49,7 @@ form.addEventListener("submit", function (event) {
                 document.getElementById("error-message").textContent = "";
                 //Sort results before displaying
                 const sorted = sortItems(movies, sortType);
-                sorted.forEach(movie => createMovieCard(movie, "search-container", true));
+                sorted.forEach(movie => createMovieCard(movie, "search-container"));
             }
         }).catch(() => {
             //Show error on network or API failure
@@ -66,7 +66,7 @@ form.addEventListener("submit", function (event) {
                 document.getElementById("error-message").textContent = "";
                 //Sort results before displaying
                 const sorted = sortItems(persons, sortType);
-                sorted.forEach(person => createPersonCard(person, "search-container", true))
+                sorted.forEach(person => createPersonCard(person, "search-container"))
             }
         }).catch(() => {
             //Show error on network or API failure
@@ -88,7 +88,7 @@ document.getElementById("sort-type").addEventListener("change", function () {
     document.getElementById("search-container").innerHTML = "";
 
     if (currentSearchType === "movie") {
-        sorted.forEach(movie => createMovieCard(movie, "search-container", true));
+        sorted.forEach(movie => createMovieCard(movie, "search-container"));
     } else {
         sorted.forEach(person => createPersonCard(person, "search-container"));
     }

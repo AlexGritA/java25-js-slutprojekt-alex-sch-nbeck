@@ -1,6 +1,6 @@
 /* Styles for movie and person cards */
 .movie-card {
-    width: 500px;
+    width: 430px;
     border-radius: 10px;
     overflow: hidden;
 }
