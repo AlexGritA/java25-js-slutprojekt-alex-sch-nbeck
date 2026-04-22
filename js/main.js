@@ -92,7 +92,6 @@ document.getElementById("sort-type").addEventListener("change", function () {
     } else {
         sorted.forEach(person => createPersonCard(person, "search-container"));
     }
-    console.log(currentResults)
 });
 
 //Reload page when title is clicked

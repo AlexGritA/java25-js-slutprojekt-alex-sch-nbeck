@@ -29,7 +29,7 @@ export function createMovieCard(movie, containerId, showOverview = false) {
     overview.textContent = movieObj.overview;
 
     //Add Bootstrap classes to style card and image
-    card.classList.add("card", "border-0", "movie-card");
+    card.classList.add("card", "border-0", "custom-card");
     img.classList.add("w-100");
 
     //Add element instances to card, then add card to container
@@ -94,7 +94,7 @@ export function createPersonCard(person, containerId) {
     });
 
     //Add Bootstrap classes to style card and image
-    card.classList.add("card", "border-0", "movie-card");
+    card.classList.add("card", "border-0", "custom-card");
     img.classList.add("w-100");
 
     //Add element instances to card, then add card to container

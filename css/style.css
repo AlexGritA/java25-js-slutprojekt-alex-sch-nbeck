@@ -1,11 +1,11 @@
 /* Styles for movie and person cards */
-.movie-card {
+.cards {
     width: 430px;
     border-radius: 10px;
     overflow: hidden;
 }
 /* Makes the title clickable with a pointer cursor */
-#site-title {
+#site-title, .custom-card {
     cursor: pointer;
 }
 
