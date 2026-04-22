@@ -32,9 +32,8 @@ form.addEventListener("submit", function (event) {
     document.getElementById("top-rated-container").classList.add("hidden");
     document.getElementById("popular-title").classList.add("hidden");
     document.getElementById("popular-container").classList.add("hidden");
-    console.log("hidden added");
 
-    
+
     if (searchType == "movie") {
         fetchMovieSearch(input).then(movies => {
             if (movies.length === 0) {
