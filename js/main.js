@@ -15,6 +15,10 @@ fetchPopularMovies().then(movies => {
     movies.slice(0, 10).forEach(movie => createMovieCard(movie, "popular-container"));
 });
 
+//Store latest search results for re-sorting
+let currentResults = [];
+let currentSearchType = "";
+
 //Listen for form submission, prevent page reload and get search input value
 form.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -36,6 +40,8 @@ form.addEventListener("submit", function (event) {
 
     if (searchType == "movie") {
         fetchMovieSearch(input).then(movies => {
+            currentResults = movies;
+            currentSearchType = "movie";
             if (movies.length === 0) {
                 //Show error if no results found
                 document.getElementById("error-message").textContent = "No results found. Try a different search term.";
@@ -51,6 +57,8 @@ form.addEventListener("submit", function (event) {
         });
     } else {
         fetchPersonSearch(input).then(persons => {
+            currentResults = persons;
+            currentSearchType = "person";
             if (persons.length === 0) {
                 //Show error if no results found
                 document.getElementById("error-message").textContent = "No results found. Try a different search term.";
@@ -68,6 +76,23 @@ form.addEventListener("submit", function (event) {
 
     //Clear search input after submission
     document.getElementById("search-input").value = "";
+});
+
+//Re-sort and render results when sort type changes
+document.getElementById("sort-type").addEventListener("change", function () {
+    if (currentResults.length === 0) return;
+
+    const sortType = document.getElementById("sort-type").value;
+    const sorted = sortItems(currentResults, sortType);
+
+    document.getElementById("search-container").innerHTML = "";
+
+    if (currentSearchType === "movie") {
+        sorted.forEach(movie => createMovieCard(movie, "search-container", true));
+    } else {
+        sorted.forEach(person => createPersonCard(person, "search-container"));
+    }
+    console.log(currentResults)
 });
 
 //Reload page when title is clicked
