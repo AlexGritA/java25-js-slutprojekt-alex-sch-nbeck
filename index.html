@@ -12,11 +12,12 @@
 </head>
 
 <body>
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-dark bg-dark px-5 mb-4">
+        <h1 id="site-title" class="navbar-brand mb-0 ms-100">FYM</h1>
+    </nav>
     <!-- Main container with padding -->
     <div class="container py-4">
-        <!-- Clickable title that reloads the page -->
-        <h1 id="site-title" class="mb-4 text-center">The Movie Database</h1>
-
         <!-- Search form with sort, type and input -->
         <form id="search-form" class="d-flex justify-content-center mb-4">
             <!-- Sort dropdown -->
@@ -43,13 +44,13 @@
         <div id="search-container" class="d-flex flex-wrap gap-3 justify-content-center"></div>
 
         <!-- Top rated movies section -->
-<h2 id="top-rated-title" class="mb-3 text-center">Top Rated Movies</h2>
-<div id="top-rated-container" class="d-flex flex-wrap gap-3 justify-content-center"></div>
+        <h2 id="top-rated-title" class="mb-3 text-center">Top Rated Movies</h2>
+        <div id="top-rated-container" class="d-flex flex-wrap gap-3 justify-content-center"></div>
 
-<!-- Popular movies section -->
-<h2 id="popular-title" class="mt-5 mb-3 text-center">Popular Movies</h2>
-<div id="popular-container" class="d-flex flex-wrap gap-3 justify-content-center"></div>
-</div>
+        <!-- Popular movies section -->
+        <h2 id="popular-title" class="mt-5 mb-3 text-center">Popular Movies</h2>
+        <div id="popular-container" class="d-flex flex-wrap gap-3 justify-content-center"></div>
+    </div>
     <!-- Modal for displaying detailed movie/person information -->
     <div class="modal fade" id="detail-modal" tabindex="-1">
         <div class="modal-dialog modal-lg">

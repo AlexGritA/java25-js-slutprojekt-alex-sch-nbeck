@@ -76,6 +76,15 @@ form.addEventListener("submit", function (event) {
 
     //Clear search input after submission
     document.getElementById("search-input").value = "";
+
+    //Show back button when search is performed
+    document.getElementById("back-btn").classList.remove("hidden");
+
+    //Reload page when back button is clicked
+    document.getElementById("back-btn").addEventListener("click", () => {
+        location.reload();
+    });
+
 });
 
 //Re-sort and render results when sort type changes
@@ -86,7 +95,6 @@ document.getElementById("sort-type").addEventListener("change", function () {
     const sorted = sortItems(currentResults, sortType);
 
     document.getElementById("search-container").innerHTML = "";
-
     if (currentSearchType === "movie") {
         sorted.forEach(movie => new Movie(movie.id, movie.title, movie.release_date, movie.vote_average, movie.poster_path, movie.overview).createCard("search-container"));
     } else {
