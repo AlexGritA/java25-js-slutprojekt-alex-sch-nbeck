@@ -1,5 +1,6 @@
 import { fetchTopRatedMovies, fetchPopularMovies, fetchMovieSearch, fetchPersonSearch } from "./api.js";
-import { createMovieCard, createPersonCard } from "./ui.js"
+import { Movie } from "../models/Movie.js"
+import { Person } from "../models/Person.js"
 import { sortItems } from "./sort.js"
 
 //Get the search form element
@@ -7,12 +8,12 @@ const form = document.getElementById("search-form");
 
 //Fetch top rated movies and display the first 10 as cards
 fetchTopRatedMovies().then(movies => {
-    movies.slice(0, 10).forEach(movie => createMovieCard(movie, "top-rated-container"));
+    movies.slice(0, 10).forEach(movie => new Movie(movie.id, movie.title, movie.release_date, movie.vote_average, movie.poster_path, movie.overview).createCard("top-rated-container"));
 });
 
 //Fetch most popular movies and display the first 10 as cards
 fetchPopularMovies().then(movies => {
-    movies.slice(0, 10).forEach(movie => createMovieCard(movie, "popular-container"));
+    movies.slice(0, 10).forEach(movie => new Movie(movie.id, movie.title, movie.release_date, movie.vote_average, movie.poster_path, movie.overview).createCard("popular-container"));
 });
 
 //Store latest search results for re-sorting
@@ -37,7 +38,6 @@ form.addEventListener("submit", function (event) {
     document.getElementById("popular-title").classList.add("hidden");
     document.getElementById("popular-container").classList.add("hidden");
 
-
     if (searchType == "movie") {
         fetchMovieSearch(input).then(movies => {
             currentResults = movies;
@@ -49,7 +49,7 @@ form.addEventListener("submit", function (event) {
                 document.getElementById("error-message").textContent = "";
                 //Sort results before displaying
                 const sorted = sortItems(movies, sortType);
-                sorted.forEach(movie => createMovieCard(movie, "search-container"));
+                sorted.forEach(movie => new Movie(movie.id, movie.title, movie.release_date, movie.vote_average, movie.poster_path, movie.overview).createCard("search-container"));
             }
         }).catch(() => {
             //Show error on network or API failure
@@ -66,7 +66,7 @@ form.addEventListener("submit", function (event) {
                 document.getElementById("error-message").textContent = "";
                 //Sort results before displaying
                 const sorted = sortItems(persons, sortType);
-                sorted.forEach(person => createPersonCard(person, "search-container"))
+                sorted.forEach(person => new Person(person.id, person.name, person.popularity, person.known_for_department, person.profile_path, person.known_for).createCard("search-container"));
             }
         }).catch(() => {
             //Show error on network or API failure
@@ -88,9 +88,9 @@ document.getElementById("sort-type").addEventListener("change", function () {
     document.getElementById("search-container").innerHTML = "";
 
     if (currentSearchType === "movie") {
-        sorted.forEach(movie => createMovieCard(movie, "search-container"));
+        sorted.forEach(movie => new Movie(movie.id, movie.title, movie.release_date, movie.vote_average, movie.poster_path, movie.overview).createCard("search-container"));
     } else {
-        sorted.forEach(person => createPersonCard(person, "search-container"));
+        sorted.forEach(person => new Person(person.id, person.name, person.popularity, person.known_for_department, person.profile_path, person.known_for).createCard("search-container"));
     }
 });
 
