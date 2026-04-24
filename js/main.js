@@ -84,7 +84,6 @@ form.addEventListener("submit", function (event) {
     document.getElementById("back-btn").addEventListener("click", () => {
         location.reload();
     });
-
 });
 
 //Re-sort and render results when sort type changes
@@ -106,3 +105,21 @@ document.getElementById("sort-type").addEventListener("change", function () {
 document.getElementById("site-title").addEventListener("click", () => {
     location.reload();
 });
+
+//Navigate to popular section and show it
+    document.querySelector('a[href="#popular-container"]').addEventListener("click", (e) => {
+        e.preventDefault();
+        document.getElementById("search-container").innerHTML = "";
+        document.getElementById("popular-title").classList.remove("hidden");
+        document.getElementById("popular-container").classList.remove("hidden");
+        document.getElementById("popular-container").scrollIntoView();
+    });
+
+    //Navigate to top rated section and show it
+    document.querySelector('a[href="#top-rated-container"]').addEventListener("click", (e) => {
+        e.preventDefault();
+        document.getElementById("search-container").innerHTML = "";
+        document.getElementById("top-rated-title").classList.remove("hidden");
+        document.getElementById("top-rated-container").classList.remove("hidden");
+        document.getElementById("top-rated-container").scrollIntoView();
+    });

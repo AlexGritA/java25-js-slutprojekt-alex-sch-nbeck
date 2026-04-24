@@ -15,6 +15,10 @@
     <!-- Navigation bar -->
     <nav class="navbar navbar-dark bg-dark px-5 mb-4">
         <h1 id="site-title" class="navbar-brand mb-0 ms-100">FYM</h1>
+        <div class="d-flex gap-3">
+            <a href="#popular-container" class="text-white text-decoration-none">Popular</a>
+            <a href="#top-rated-container" class="text-white text-decoration-none">Top Rated</a>
+        </div>
     </nav>
     <!-- Main container with padding -->
     <div class="container py-4">
@@ -43,14 +47,15 @@
         <!-- Container for search results -->
         <div id="search-container" class="d-flex flex-wrap gap-3 justify-content-center"></div>
 
-        <!-- Top rated movies section -->
-        <h2 id="top-rated-title" class="mb-3 text-center">Top Rated Movies</h2>
-        <div id="top-rated-container" class="d-flex flex-wrap gap-3 justify-content-center"></div>
-
         <!-- Popular movies section -->
         <h2 id="popular-title" class="mt-5 mb-3 text-center">Popular Movies</h2>
         <div id="popular-container" class="d-flex flex-wrap gap-3 justify-content-center"></div>
     </div>
+
+    <!-- Top rated movies section -->
+    <h2 id="top-rated-title" class="mb-3 text-center">Top Rated Movies</h2>
+    <div id="top-rated-container" class="d-flex flex-wrap gap-3 justify-content-center"></div>
+
     <!-- Modal for displaying detailed movie/person information -->
     <div class="modal fade" id="detail-modal" tabindex="-1">
         <div class="modal-dialog modal-lg">
