@@ -1,4 +1,3 @@
-//Sort the results before displaying them
 export function sortItems(items, sortType) {
     if (sortType === "az") {
         return items.sort((a, b) => (a.title || a.name).localeCompare(b.title || b.name));

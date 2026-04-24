@@ -1,15 +1,13 @@
-/* Styles for movie and person cards */
-.cards {
-    width: 430px;
+.custom-cards {
+    width: 100px;
     border-radius: 10px;
     overflow: hidden;
 }
-/* Makes the title clickable with a pointer cursor */
+
 #site-title, .custom-card {
     cursor: pointer;
 }
 
-/*Hide elements when search results are displayed*/
 .hidden {
     height: 0 !important;
     overflow: hidden !important;

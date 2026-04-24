@@ -1,6 +1,5 @@
 import { fetchMovieDetails } from "../js/api.js";
 
-//Creates attributes to Movie model
 export class Movie {
     constructor(id, title, release_date, vote_average, poster_path, overview) {
         this.id = id;
@@ -13,7 +12,6 @@ export class Movie {
 
     createCard(containerId, showOverview = false) {
 
-        //Get container element where card will be added
         const container = document.getElementById(containerId);
 
         const card = document.createElement("div");
@@ -33,11 +31,9 @@ export class Movie {
         const overview = document.createElement("p");
         overview.textContent = this.overview;
 
-        //Add Bootstrap classes to style card and image
         card.classList.add("card", "border-0", "custom-card");
         img.classList.add("w-100");
 
-        //Add element instances to card, then add card to container
         card.appendChild(img);
         card.appendChild(title);
         card.appendChild(score);
@@ -46,7 +42,6 @@ export class Movie {
             card.appendChild(overview);
         }
 
-        //Open modal with detailed movie info when card is clicked
         card.addEventListener("click", () => {
             fetchMovieDetails(this.id).then(details => {
                 document.getElementById("modal-title").textContent = details.title;

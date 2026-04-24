@@ -1,6 +1,5 @@
 import { fetchPersonDetails } from "../js/api.js";
 
-//Creates attributes to Person model
 export class Person {
     constructor(id, name, popularity, known_for_department, profile_path, known_for) {
         this.id = id;
@@ -29,7 +28,6 @@ export class Person {
         const img = document.createElement("img");
         img.src = `https://image.tmdb.org/t/p/w500${this.profile_path}`;
 
-        //Create list of known works with Movie/TV labels
         const workList = document.createElement("ul");
         this.known_for.forEach(work => {
             const item = document.createElement("li");
@@ -41,18 +39,15 @@ export class Person {
             workList.appendChild(item);
         });
 
-        //Add Bootstrap classes to style card and image
         card.classList.add("card", "border-0", "custom-card");
         img.classList.add("w-100");
 
-        //Add element instances to card, then add card to container
         card.appendChild(img);
         card.appendChild(name);
         card.appendChild(popularity);
         card.appendChild(department);
         card.appendChild(workList);
 
-        //Open modal with detailed person info when card is clicked
         card.addEventListener("click", () => {
             fetchPersonDetails(this.id).then(details => {
                 document.getElementById("modal-title").textContent = details.name;
